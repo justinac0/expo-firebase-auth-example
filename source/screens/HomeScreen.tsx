@@ -1,5 +1,10 @@
-import { Button, Text } from "react-native";
+import { View, Text } from "react-native";
+
+import Button from "../components/Button";
+import Break from "../components/Break";
+
 import { useAuth } from "../context/AuthProvider";
+import { globalStyles } from "../styles/GlobalStyle";
 
 const HomeScreen = ({ navigation }) => {
   const auth = useAuth();
@@ -14,10 +19,11 @@ const HomeScreen = ({ navigation }) => {
   };
 
   return (
-    <>
+    <View style={globalStyles.container}>
       <Button title="Sign Out" onPress={onSignOutPress} />
+      <Break />
       <Text>Current User: {auth.currentUser.email}</Text>
-    </>
+    </View>
   );
 };
 

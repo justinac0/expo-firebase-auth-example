@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
-
+import { View, Text, StyleSheet } from "react-native";
+import Button from "../components/Button";
 import TextField from "../components/TextField";
 import Break from "../components/Break";
-
-import { useAuth } from "../context/AuthProvider";
-import { LoginResult, RegisterResult } from "../lib/firebase_helper";
+import { useAuth, LoginResult, RegisterResult } from "../context/AuthProvider";
+import { Colors, globalStyles } from "../styles/GlobalStyle";
 
 const AuthScreen = ({navigation}) => {
   const auth = useAuth();
@@ -30,7 +29,7 @@ const AuthScreen = ({navigation}) => {
   };
 
   return (
-    <View style={[styles.container, styles.centerAll]}>
+    <View style={[globalStyles.container, styles.centerAll]}>
       <Text style={styles.title}>AppName</Text>
       <Break />
       <Break />
@@ -42,9 +41,9 @@ const AuthScreen = ({navigation}) => {
       <TextField text={password} setText={setPassword} isSecret={true} />
       <Break />
       <Break />
-      <Button title="Login" onPress={OnLoginPress} />
+      <Button title="Login" onPress={OnLoginPress}/>
       <Break />
-      <Button title="Register" onPress={OnRegisterPress} />
+      <Button title="Register" onPress={OnRegisterPress} bgColor={Colors.BLUE}/>
     </View>
   );
 };
@@ -54,10 +53,6 @@ export default AuthScreen;
 const styles = StyleSheet.create({
   title: {
     fontSize: 48,
-  },
-  container: {
-    flex: 1,
-    padding: 32
   },
   textInput: {
     padding: 5,
