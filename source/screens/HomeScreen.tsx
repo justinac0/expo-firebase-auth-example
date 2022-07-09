@@ -23,10 +23,9 @@ const HomeScreen = ({ navigation }) => {
       <Button
         title="To Manage Screen"
         onPress={() => navigation.navigate("manage")}
-        bgColor={Colors.BLUE}
       />
       <Break />
-      <Button title="Sign Out" onPress={onSignOutPress} />
+      <Button title="Sign Out" onPress={onSignOutPress} bgColor={Colors.RED} />
       <Break />
       <Text>Current User: {auth.currentUser.email}</Text>
     </View>

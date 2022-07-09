@@ -11,7 +11,9 @@ type TextFieldFn = FC<TextFieldParams>;
 const TextField: TextFieldFn = ({text, setText, isSecret}) => {
   return (
     <TextInput
-      style={styles.textInput}
+      style={[styles.textInput, {
+        fontFamily: "monospace"
+      }]}
       value={text}
       onChangeText={setText}
       secureTextEntry={isSecret}

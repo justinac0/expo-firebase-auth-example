@@ -36,11 +36,11 @@ export default Button;
 const styles = StyleSheet.create({
   button: {
     padding: 8,
-    borderRadius: 5,
+    borderRadius: 3,
   },
   buttonText: {
     textAlign: "center",
-    // textTransform: "uppercase",
-    fontWeight: "bold",
+    textTransform: "uppercase",
+    fontFamily: "sans-serif-medium"
   },
 });

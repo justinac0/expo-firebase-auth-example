@@ -6,14 +6,17 @@ import Break from "../components/Break";
 import { useAuth, LoginResult, RegisterResult } from "../context/AuthProvider";
 import { Colors, globalStyles } from "../styles/GlobalStyle";
 
-const AuthScreen = ({navigation}) => {
+const AuthScreen = ({ navigation }) => {
   const auth = useAuth();
-  
+
   const [email, setEmail] = useState("example@gmail.com");
   const [password, setPassword] = useState("123456");
 
   const OnLoginPress = async () => {
-    const status: LoginResult = await auth.signInWithEmailAndPassword(email, password);
+    const status: LoginResult = await auth.signInWithEmailAndPassword(
+      email,
+      password
+    );
     if (status == LoginResult.SUCCESS) {
       console.log("Success!");
     } else {
@@ -22,7 +25,10 @@ const AuthScreen = ({navigation}) => {
   };
 
   const OnRegisterPress = async () => {
-    const status: RegisterResult = await auth.registerWithEmailAndPassword(email, password);
+    const status: RegisterResult = await auth.registerWithEmailAndPassword(
+      email,
+      password
+    );
     if (status == RegisterResult.SUCCESS) {
       console.log("Register Success!");
     }
@@ -30,7 +36,16 @@ const AuthScreen = ({navigation}) => {
 
   return (
     <View style={[globalStyles.container, styles.centerAll]}>
-      <Text style={styles.title}>AppName</Text>
+      <Text
+        style={[
+          styles.title,
+          {
+            fontFamily: "Roboto",
+          },
+        ]}
+      >
+        AppName
+      </Text>
       <Break />
       <Break />
       <Break />
@@ -41,17 +56,30 @@ const AuthScreen = ({navigation}) => {
       <TextField text={password} setText={setPassword} isSecret={true} />
       <Break />
       <Break />
-      <Button title="Login" onPress={OnLoginPress}/>
+      <Button title="Login" onPress={OnLoginPress} />
       <Break />
-      <Button title="SSO Login" onPress={() => {console.log("not implemented")}}/>
+      <Button
+        title="SSO Login"
+        onPress={() => {
+          console.log("not implemented");
+        }}
+      />
       <Break />
-      <Button title="Use Offline" onPress={() => {
-        auth.useOffline();
-      }} bgColor={Colors.GRAY}/>
+      <Button
+        title="Use Offline"
+        onPress={() => {
+          auth.useOffline();
+        }}
+        bgColor={Colors.GRAY}
+      />
       <Break />
       <Text>or</Text>
       <Break />
-      <Button title="Register" onPress={OnRegisterPress} bgColor={Colors.BLUE}/>
+      <Button
+        title="Register"
+        onPress={OnRegisterPress}
+        bgColor={Colors.BLUE}
+      />
     </View>
   );
 };
@@ -68,6 +96,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   centerAll: {
-      justifyContent: "center",
-  }
+    justifyContent: "center",
+  },
 });
