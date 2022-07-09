@@ -4,7 +4,7 @@ import Button from "../components/Button";
 import Break from "../components/Break";
 
 import { useAuth } from "../context/AuthProvider";
-import { globalStyles } from "../styles/GlobalStyle";
+import { Colors, globalStyles } from "../styles/GlobalStyle";
 
 const HomeScreen = ({ navigation }) => {
   const auth = useAuth();
@@ -20,6 +20,12 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={globalStyles.container}>
+      <Button
+        title="To Manage Screen"
+        onPress={() => navigation.navigate("manage")}
+        bgColor={Colors.BLUE}
+      />
+      <Break />
       <Button title="Sign Out" onPress={onSignOutPress} />
       <Break />
       <Text>Current User: {auth.currentUser.email}</Text>
