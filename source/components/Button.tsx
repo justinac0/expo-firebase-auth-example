@@ -1,16 +1,36 @@
 import { FC } from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
-import {Colors} from "../styles/GlobalStyle"
+import { Colors } from "../styles/GlobalStyle";
 
-const Button = ({title, onPress, bgColor = Colors.GREEN, fgColor = Colors.WHITE}) => {
-  return <TouchableOpacity onPress={onPress} style={[styles.button, {
-    backgroundColor: bgColor
-  }]}>
-    <Text style={[styles.buttonText, {
-      color: fgColor
-    }]}>{title}</Text>
-  </TouchableOpacity>
-}
+const Button = ({
+  title = "Button",
+  onPress = () => {},
+  bgColor = Colors.GREEN,
+  fgColor = Colors.WHITE,
+}) => {
+  return (
+    <TouchableOpacity
+      onPress={onPress}
+      style={[
+        styles.button,
+        {
+          backgroundColor: bgColor,
+        },
+      ]}
+    >
+      <Text
+        style={[
+          styles.buttonText,
+          {
+            color: fgColor,
+          },
+        ]}
+      >
+        {title}
+      </Text>
+    </TouchableOpacity>
+  );
+};
 
 export default Button;
 
@@ -22,7 +42,6 @@ const styles = StyleSheet.create({
   buttonText: {
     textAlign: "center",
     textTransform: "uppercase",
-    fontWeight: "bold"
-  }
+    fontWeight: "bold",
+  },
 });
-
