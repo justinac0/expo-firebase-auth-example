@@ -7,15 +7,20 @@ import { AuthProvider, useAuth } from "./source/context/AuthProvider";
 
 import HomeScreen from "./source/screens/HomeScreen";
 import AuthScreen from "./source/screens/AuthScreen";
+import ManageScreen from "./source/screens/ManageScreen";
 
 const App = () => {
   return (
     <AuthProvider>
       <StatusBar />
       <Screens />
-      <Text style={{
-        padding: 15,
-      }}>"How do the things work? The don't.." - some engineer</Text>
+      <Text
+        style={{
+          padding: 15,
+        }}
+      >
+        "How do the things work? The don't.." - some engineer
+      </Text>
     </AuthProvider>
   );
 };
@@ -38,6 +43,7 @@ const Screens = () => {
                 headerRight: () => undefined,
               }}
             />
+            <Stack.Screen name="manage" component={ManageScreen} />
           </>
         ) : (
           <Stack.Screen

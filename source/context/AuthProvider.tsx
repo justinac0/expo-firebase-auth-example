@@ -34,6 +34,8 @@ interface Auth {
   signOut: () => Promise<void>,
   signInWithEmailAndPassword: (email: string, password: string) => Promise<void | LoginResult>,
   registerWithEmailAndPassword: (email: string, password: string) => Promise<void | RegisterResult>,
+  useOffline: () => void,
+  isOffline: boolean,
 }
 
 export const AuthContext = createContext<Auth | null>(null);
@@ -46,6 +48,7 @@ export const AuthProvider: FC = ({ children }) => {
 const useAuthProvider = (): Auth => {
   const [loading, setLoading] = useState<boolean>(true);
   const [currentUser, setCurrentUser] = useState<any>(null);
+  const [isOffline, setIsOffline] = useState(false);
 
   const setLoadedUser: (user: fbUser | null) => void = (user) => {
     setCurrentUser(user);
@@ -57,6 +60,13 @@ const useAuthProvider = (): Auth => {
   }, []);
 
   const signOut = () => {
+    if (isOffline) {
+      setCurrentUser(null);
+      setIsOffline(false); // NOTE(justinac0): This is not a great way to implement offline
+      // mode, but it works. Can be improved upon.
+      return;
+    }
+
     return fbSignOut(getAuth());
   }
 
@@ -73,6 +83,15 @@ const useAuthProvider = (): Auth => {
         return LoginResult.FAILED;
       });
   };
+
+  const useOffline = () => {
+    setCurrentUser({
+      email: "no email",
+      user: "Offline User",
+    });
+
+    setIsOffline(true);
+  }
 
   const registerWithEmailAndPassword = (
     email: string,
@@ -96,6 +115,8 @@ const useAuthProvider = (): Auth => {
     registerWithEmailAndPassword,
     signInWithEmailAndPassword,
     signOut,
+    useOffline,
+    isOffline,
   };
 };
 

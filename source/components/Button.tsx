@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 import { Colors } from "../styles/GlobalStyle";
 
@@ -41,7 +40,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     textAlign: "center",
-    textTransform: "uppercase",
+    // textTransform: "uppercase",
     fontWeight: "bold",
   },
 });

@@ -43,6 +43,14 @@ const AuthScreen = ({navigation}) => {
       <Break />
       <Button title="Login" onPress={OnLoginPress}/>
       <Break />
+      <Button title="SSO Login" onPress={() => {console.log("not implemented")}}/>
+      <Break />
+      <Button title="Use Offline" onPress={() => {
+        auth.useOffline();
+      }} bgColor={Colors.GRAY}/>
+      <Break />
+      <Text>or</Text>
+      <Break />
       <Button title="Register" onPress={OnRegisterPress} bgColor={Colors.BLUE}/>
     </View>
   );
