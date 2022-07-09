@@ -20,11 +20,16 @@ React Native firebase example (using expo-cli).
 5. run `npm start`
 6. connect to expo with desired device
 
-## Database
+## Todo
+### Database
 - [ ] User Specified Data
 - [ ] MOTD
 
-## Authentication
+### Authentication
 - [x] Email and Password
 - [ ] Google
 - [ ] Microsoft
+
+### Misc
+- [ ] Popups/Visual indicator of login/register progress
+- [ ] Animations
